@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landscape</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin-top: 50px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #canvas {
+        margin: auto;
+        display: block;
+        border: 1px solid silver;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Canvas Drawing</h1>
+    <canvas id="canvas" width="1000px" height="500px"></canvas>
+
+    <script>
+      // Create variables
+      const canvas = window.document.querySelector('#canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Call Function
+      drawHouse();
+      // Create Function
+      function drawHouse(){
+        // Draw Grass
+        ctx.fillStyle = 'lime';
+        ctx.fillRect(0, 490, 1000, 500);
+        // Draw Walls
+        ctx.fillStyle = 'red';
+        ctx.fillRect(350, 200, 250, 350);
+
+        // Draw Chimney
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(550, 100, 50, 100);
+        
+        // Draw Windows
+        ctx.fillStyle = '#000';
+        ctx.fillRect(375, 215, 50, 50);
+        ctx.fillRect(525, 215, 50, 50);
+        ctx.fillRect(375, 275, 50, 50);
+        ctx.fillRect(525, 275, 50, 50);
+        ctx.fillRect(375, 335, 50, 50);
+        ctx.fillRect(525, 335, 50, 50);
+
+        // Draw Door
+        ctx.fillStyle = '#000';
+        ctx.fillRect(450, 430, 50, 75);
+
+        // Draw Roof
+        ctx.fillStyle = 'orange';
+        ctx.beginPath(); 
+        ctx.moveTo(250, 200); // Starting Point
+        ctx.lineTo(475, 75); // point 1
+        ctx.lineTo(700, 200); // point 2
+        ctx.closePath(); 
+        ctx.fill();
+      }
+    </script>
+  </body>
+</html>

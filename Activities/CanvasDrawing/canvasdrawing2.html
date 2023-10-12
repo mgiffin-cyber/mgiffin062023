@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Drawing</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin-top: 50px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #canvas {
+        margin: auto;
+        display: block;
+        border: 1px solid silver;
+        background-color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Canvas Drawing</h1>
+    <canvas id="canvas" width="1000px" height="500px"></canvas>
+
+    <script>
+      // Create variables
+      const canvas = window.document.querySelector('#canvas');
+      const ctx = canvas.getContext('2d');
+
+    //   Call Function
+    drawCity();
+    // Create Function
+    function drawCity(){
+        // Draw Buildings
+        ctx.fillStyle = '#000';
+        ctx.fillRect(700, 150, 235, 350);
+        ctx.fillRect(50, 200, 180, 350);
+        ctx.fillRect(500, 100, 125, 450);
+        // Draw Windows 1
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(725, 175, 40, 40);
+        ctx.fillRect(775, 175, 40, 40);
+        ctx.fillRect(825, 175, 40, 40);
+        ctx.fillRect(875, 175, 40, 40);
+        ctx.fillRect(725, 225, 40, 40);
+        ctx.fillRect(775, 225, 40, 40);
+        ctx.fillRect(825, 225, 40, 40);
+        ctx.fillRect(875, 225, 40, 40);
+        ctx.fillRect(725, 275, 40, 40);
+        ctx.fillRect(775, 275, 40, 40);
+        ctx.fillRect(825, 275, 40, 40);
+        ctx.fillRect(875, 275, 40, 40);
+        
+        ctx.fillRect(725, 325, 40, 40);
+        ctx.fillRect(775, 325, 40, 40);
+        ctx.fillRect(825, 325, 40, 40);
+        ctx.fillRect(875, 325, 40, 40);
+        ctx.fillRect(725, 375, 40, 40);
+        // ctx.fillRect(775, 375, 40, 40);
+        // ctx.fillRect(825, 375, 40, 40);
+        ctx.fillRect(875, 375, 40, 40);
+        ctx.fillRect(725, 425, 40, 40);
+        // ctx.fillRect(775, 425, 40, 40);
+        // ctx.fillRect(825, 425, 40, 40);
+        ctx.fillRect(875, 425, 40, 40);
+        // Draw Door 1
+        ctx.fillStyle = '#623102';
+        ctx.fillRect(775, 400, 40, 90);
+        ctx.fillRect(825, 400, 40, 90);
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(775, 375, 90, 15);
+        // Draw Windows 2
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(515, 115, 25, 25);
+        ctx.fillRect(550, 115, 25, 25);
+        ctx.fillRect(585, 115, 25, 25);
+        ctx.fillRect(515, 150, 25, 25);
+        ctx.fillRect(550, 150, 25, 25);
+        ctx.fillRect(585, 150, 25, 25);
+        ctx.fillRect(515, 185, 25, 25);
+        ctx.fillRect(550, 185, 25, 25);
+        ctx.fillRect(585, 185, 25, 25);
+        ctx.fillRect(515, 220, 25, 25);
+        ctx.fillRect(550, 220, 25, 25);
+        ctx.fillRect(585, 220, 25, 25);
+        ctx.fillRect(515, 255, 25, 25);
+        ctx.fillRect(550, 255, 25, 25);
+        ctx.fillRect(585, 255, 25, 25);
+        ctx.fillRect(515, 290, 25, 25);
+        ctx.fillRect(550, 290, 25, 25);
+        ctx.fillRect(585, 290, 25, 25);
+        ctx.fillRect(515, 325, 25, 25);
+        ctx.fillRect(550, 325, 25, 25);
+        ctx.fillRect(585, 325, 25, 25);
+        ctx.fillRect(515, 360, 25, 25);
+        ctx.fillRect(550, 360, 25, 25);
+        ctx.fillRect(585, 360, 25, 25);
+        ctx.fillRect(515, 395, 25, 25);
+        ctx.fillRect(550, 395, 25, 25);
+        ctx.fillRect(585, 395, 25, 25);
+        ctx.fillRect(515, 430, 25, 25);
+        // ctx.fillRect(550, 430, 25, 25);
+        ctx.fillRect(585, 430, 25, 25);
+        ctx.fillRect(515, 465, 25, 25);
+        // ctx.fillRect(550, 465, 25, 25);
+        ctx.fillRect(585, 465, 25, 25);
+        // Draw Door 2
+        ctx.fillStyle = '#623102';
+        ctx.fillRect(550, 445, 25, 60)
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(550, 430, 25, 10);
+        // Draw Windows 3
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(65, 215, 30, 30);
+        ctx.fillRect(105, 215, 30, 30);
+        ctx.fillRect(145, 215, 30, 30);
+        ctx.fillRect(185, 215, 30, 30);
+        ctx.fillRect(65, 255, 30, 30);
+        ctx.fillRect(105, 255, 30, 30);
+        ctx.fillRect(145, 255, 30, 30);
+        ctx.fillRect(185, 255, 30, 30);
+        ctx.fillRect(65, 295, 30, 30);
+        ctx.fillRect(105, 295, 30, 30);
+        ctx.fillRect(145, 295, 30, 30);
+        ctx.fillRect(185, 295, 30, 30);
+        ctx.fillRect(65, 335, 30, 30);
+        ctx.fillRect(105, 335, 30, 30);
+        ctx.fillRect(145, 335, 30, 30);
+        ctx.fillRect(185, 335, 30, 30);
+        ctx.fillRect(65, 375, 30, 30);
+        ctx.fillRect(105, 375, 30, 30);
+        ctx.fillRect(145, 375, 30, 30);
+        ctx.fillRect(185, 375, 30, 30);
+        ctx.fillRect(65, 415, 30, 30);
+        // ctx.fillRect(105, 415, 30, 30);
+        // ctx.fillRect(145, 415, 30, 30);
+        ctx.fillRect(185, 415, 30, 30);
+        ctx.fillRect(65, 455, 30, 30);
+        // ctx.fillRect(105, 455, 30, 30);
+        // ctx.fillRect(145, 455, 30, 30);
+        ctx.fillRect(185, 455, 30, 30);
+        // Draw Door 3
+        ctx.fillStyle = '#623102';
+        ctx.fillRect(105, 430, 30, 90);
+        ctx.fillRect(145, 430, 30, 90);
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(105, 415, 70, 10);
+        // Draw Chimneys
+        ctx.fillStyle = '#000';
+        ctx.fillRect(850, 130, 20, 25);
+        ctx.fillRect(60, 180, 20, 25);
+        ctx.fillRect(570, 80, 20, 25);
+        // Draw Moon
+        ctx.fillStyle = '#E1D6BF';
+        ctx.arc(100, 100, 50, 0, Math.PI * 2);
+        ctx.fill();
+        // Draw Smoke
+        ctx.fillStyle = '#7E7D83';
+        ctx.fillRect(590, 50, 20, 20);
+        ctx.fillRect(600, 45, 20, 20);
+        ctx.fillRect(860, 110, 20, 20);
+        ctx.fillRect(870, 105, 20, 20);
+        ctx.fillRect(880, 95, 20, 20);
+        ctx.fillRect(70, 155, 20, 20);
+        ctx.fillRect(75, 145, 20, 20);
+        ctx.fillRect(80, 135, 20, 20);
+        // Draw Tree
+        ctx.fillStyle = '#623102';
+        ctx.fillRect(350, 475, 10, 20);
+        // Triangle 1
+        ctx.fillStyle = 'green';
+        ctx.beginPath();
+        ctx.moveTo(315, 480);
+        ctx.lineTo(355, 445);
+        ctx.lineTo(400, 480);
+        ctx.closePath();
+        ctx.fill();
+        // Triangle 2
+        ctx.beginPath();
+        ctx.moveTo(315, 460);
+        ctx.lineTo(355, 425);
+        ctx.lineTo(400, 460);
+        ctx.closePath();
+        ctx.fill();
+        // Triangle 3
+        ctx.beginPath();
+        ctx.moveTo(320, 440);
+        ctx.lineTo(355, 405);
+        ctx.lineTo(395, 440);
+        ctx.closePath();
+        ctx.fill();
+        // Draw Road
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0, 490, 1000, 500);
+    }
+    </script>
+  </body>
+</html>
