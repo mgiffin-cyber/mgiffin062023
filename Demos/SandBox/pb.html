@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PB</title>
+    <style>
+        #chuck{
+            border: solid black 2px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="chuck"></canvas>
+
+    <script>
+        const canvas = window.document.getElementById('chuck');
+        const ctx = chuck.getContext('2d');
+        // alert(ctx);
+        const mouse = {
+            x:undefined,
+            y:undefined,
+        };
+
+        let drawing = false;
+
+        chuck.width = window.innerWidth;
+        chuck.height = window.innerHeight;
+        chuck.style.backgroundColor = "silver";
+
+
+        // ctx.beginPath();
+        // ctx.moveTo(50, 50);
+        // ctx.lineTo(100, 100);
+        // ctx.stroke();
+
+
+
+         // Add an event listener to the canvas
+         canvas.addEventListener('mousedown', function(event){
+            drawing = true;
+            // console.log(event);
+            mouse.x = event.x;
+            mouse.y = event.y;
+
+         //alert(mouse.x + " | " + mouse.y);
+         ctx.beginPath();
+            ctx.lineWidth = 10;
+        ctx.strokeStyle = "red";
+        ctx.moveTo(mouse.x, mouse.y);
+        });
+
+
+                // Add an event listener to the canvas
+                canvas.addEventListener('mousemove', function(event){
+
+
+
+            // console.log(event);
+            mouse.x = event.x;
+            mouse.y = event.y;
+
+         //alert(mouse.x + " | " + mouse.y);
+if(drawing = true){
+           ctx.lineTo(mouse.x, mouse.y);
+           ctx.stroke();
+}
+        });
+
+        // Add an event listener to the canvas
+                canvas.addEventListener('mouseup', function(event){
+            // console.log(event);
+            mouse.x = event.x;
+            mouse.y = event.y;
+
+         //alert(mouse.x + " | " + mouse.y);
+
+         drawing = false;
+           ctx.beginPath();
+        });
+
+        function draw(){
+            // Draw circle
+          
+        //ctx.lineTo(mouse.x, mouse.y);
+        //ctx.stroke();
+        // ctx.arc(mouse.x, mouse.y, 30, 0, Math.PI * 2);
+        // ctx.fill();
+        // ctx.stroke();
+        }
+    </script>
+</body>
+</html>

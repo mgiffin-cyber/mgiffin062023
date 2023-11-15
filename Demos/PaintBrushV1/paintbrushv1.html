@@ -45,6 +45,8 @@
         // Create canvas and assign variables
         const canvas = window.document.querySelector('#canvas');
         const ctx = canvas.getContext('2d');
+        // Change line cap
+        ctx.lineCap = 'round';
         // Colorpicker variable
         const colorPicker = window.document.querySelector('#colorpicker');
         // Rangepicker variable
@@ -75,6 +77,8 @@
         // Add several event listeners to the canvas
         canvas.addEventListener('mousedown', function(e){
             painting = true;
+            // Begin line
+            ctx.moveTo(mouse.x, mouse.y);
             draw();
         });
 
@@ -85,16 +89,19 @@
         });
         canvas.addEventListener('mouseup', function(e){
             painting = false;
+            ctx.beginPath();
         });
 
         // Create named function to draw
         function draw(){
             // console.log('drawing');
             if(painting == true){
-                ctx.beginPath();
-                ctx.fillStyle = brushColor;
-                ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
-                ctx.fill();
+                // ctx.beginPath();
+                ctx.strokeStyle = brushColor;
+                ctx.lineWidth = brushSize;
+                // ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
             }
         }
 
