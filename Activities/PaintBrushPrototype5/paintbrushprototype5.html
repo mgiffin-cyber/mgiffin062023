@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaintBrush Version 3</title>
+    <title>PaintBrush Version 5</title>
     <style>
         *{
             box-sizing: border-box;
@@ -26,14 +26,35 @@
             position: fixed;
             padding: 1rem;
             bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #clear{
+            padding: 2px;
+            background-color: #fff;
+            width: 4rem;
+        }
+        #right{
+            /* background-color: red; */
+            /* border: 1px solid black; */
+            display: flex;
+            gap: 1rem;
         }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <section id="menu">
-        <input type="color" id="colorpicker" value="#000000">
-        <input type="range" id="rangepicker" min="2" max="100" value="15">
+        <div id="left">
+            <input type="color" id="colorpicker" value="#000000">
+            <input type="range" id="rangepicker" min="2" max="100" value="15">
+        </div>
+        <div id="right">
+            <img src="Images/eraser.svg" alt="Eraser">
+            <button id="clear">Clear</button>
+      
+        </div>
     </section>
     <script>
         // Create JavaScript variables
@@ -51,6 +72,8 @@
         const colorPicker = window.document.querySelector('#colorpicker');
         // Rangepicker variable
         const rangePicker = window.document.querySelector('#rangepicker');
+        const erase = window.document.querySelector('#right');
+        const clear = window.document.querySelector('#clear');
 
         // Set the canvas size
         canvas.width = window.innerWidth;
@@ -99,11 +122,24 @@
                 // ctx.beginPath();
                 ctx.strokeStyle = brushColor;
                 ctx.lineWidth = brushSize;
+            // Fix the jagged lines
+                ctx.lineJoin = 'round';
                 // ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
                 ctx.lineTo(mouse.x, mouse.y);
                 ctx.stroke();
             }
         }
+
+        // Build eraser
+        erase.addEventListener('click', function(e){
+                brushColor = canvasColor;
+        });
+
+        // Clear screen
+        clear.addEventListener('click', function(e){
+            ctx.fillStyle = canvasColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        });
 
         // Add event listener
         window.addEventListener('resize', function(){

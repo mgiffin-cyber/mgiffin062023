@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaintBrush Version 1</title>
+    <title>PaintBrush Version 4</title>
     <style>
         *{
             box-sizing: border-box;
@@ -105,6 +105,8 @@
                 // ctx.beginPath();
                 ctx.strokeStyle = brushColor;
                 ctx.lineWidth = brushSize;
+            // Fix the jagged lines
+                ctx.lineJoin = 'round';
                 // ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
                 ctx.lineTo(mouse.x, mouse.y);
                 ctx.stroke();
