@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <h1>Arrays</h1>
+    <h2>Index, Push, Pop, and Shift</h2>
+    <h2>ForEach, Console.log</h2>
+    <script>
+        // Arrays
+
+        // Create array variable
+        let myList = [];
+
+        // Add values to array using an index
+        myList[0] = "Fido";
+        myList[1] = "Ajax";
+        myList[2] = "Pixel";
+        myList[3] = "Butters";
+
+        // Add values to array using the push method
+        myList.push("Sunny");
+        myList.push("Brownie");
+        myList.push("Dusty");
+
+        // window.document.write(myList);
+
+        // Delete the last value of an array using the pop method
+        myList.pop();
+        // Delete the first value of an array using the shift method
+        myList.shift();
+
+        // window.alert(myList);
+
+        console.log(myList);
+
+        // List array length (total values in array)
+        console.log(myList.length);
+
+        // Cycle through array using forEach method
+        myList.forEach( function(dogname, index){
+            console.log(index + ' ' + dogname);
+        });
+
+        // Cycle through array using forEach method
+        myList.forEach( function(dn, index){
+            window.alert(dn + ' is index ' + index);
+        });
+    </script>
+</body>
+</html>
