@@ -10,7 +10,7 @@
     <div id="displayrandomfood"></div>
     <script>
         // Create Fruit Array
-        let foodList = ['<img src="Images/apple.png">', '<img src="Images/banana.png">', '<img src="Images/cherry.png">', '<img src="Images/grape">'];
+        let foodList = ['<img src="Images/apple.png">', '<img src="Images/banana.png">', '<img src="Images/cherry.png">', '<img src="Images/grape.png">'];
         // Add a few more food items
         foodList.push('<img src="Images/peach.png">');
         foodList.push('<img src="Images/pear.png">');
@@ -30,6 +30,7 @@
         const displayRandomFood = window.document.querySelector('#displayrandomfood');
         //window.alert(displayRandomFood);
 
+        console.log(foodList[randomNumber]);
         displayRandomFood.innerHTML = foodList[randomNumber];
     </script>
 </body>
