@@ -35,6 +35,7 @@
         <button id="createshape">Create Shape</button>
         <button id="createarc">Create Arc</button>
         <button id="createstar">Create Star</button>
+        <button id="undodraw">Undo Drawing</button>
     </div>
     <script>
         // Create Variables
@@ -48,12 +49,17 @@
         // Style Canvas
         canvas.style.backgroundColor = 'lightblue';
 
+        // Undo Variables
+        let undoArray = [];
+        let undoIndex = -1; // To capture position in the array. First position is zero.
+
         // Create Variables for Buttons
         const btnCreateLine = window.document.querySelector('#createline');
         const btnCreateRectangle = window.document.querySelector('#createrectangle');
         const btnCreateShape = window.document.querySelector('#createshape');
         const btnCreateArc = window.document.querySelector('#createarc');
         const btnCreateStar = window.document.querySelector('#createstar');
+        const btnUndo = window.document.querySelector('#undodraw');
 
         // Add Event Listeners
         btnCreateLine.addEventListener('click', function(){
@@ -70,8 +76,10 @@
             ctx.moveTo(200, 15);
             ctx.lineTo(200, 250);
             ctx.lineTo(350, 250);
-            ctx.closePath();
             ctx.stroke();
+            ctx.closePath();// To prevent errors.
+
+            captureDrawing();
         });
         btnCreateRectangle.addEventListener('click', function(){
             // window.alert("btnCreateRectangle");
@@ -84,6 +92,8 @@
             // Draw the Rectangle
             ctx.fillRect(0, 0, 200, 200);
             // ctx.strokeRect(10, 30, 200, 100);
+
+            captureDrawing();
         });
         btnCreateShape.addEventListener('click', function(){
             // window.alert("btnCreateShape");
@@ -105,12 +115,14 @@
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
+
+            captureDrawing();
         });
         btnCreateArc.addEventListener('click', function(){
             // window.alert("btnCreateArc");
 
             // Convert Drawing to Degrees
-            let desiredDegree = 260;
+            let desiredDegree = 360;
             let convertedRadian = (Math.PI/180) * desiredDegree;
 
             // Define Arc Properties
@@ -124,32 +136,64 @@
             ctx.arc(200, 200, 50, convertedRadian, false)
             ctx.fill();
             ctx.stroke();
+            ctx.closePath();// To prevent errors.
+
+            captureDrawing();
+
         });
         btnCreateStar.addEventListener('click', function(){
-        // Set Properties
-        ctx.strokeStyle = "black";
-        ctx.fillStyle = "yellow";
-        ctx.lineWidth = 5;
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
+            // Set Properties
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "yellow";
+            ctx.lineWidth = 5;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
 
-        // Draw the Star
-        ctx.beginPath();
-        ctx.moveTo(120, 177);
-        ctx.lineTo(135, 210);
-        ctx.lineTo(160, 210);
-        ctx.lineTo(137, 235);
-        ctx.lineTo(150, 270);
-        ctx.lineTo(120, 255);
-        ctx.lineTo(90, 270);
-        ctx.lineTo(103, 235);
-        ctx.lineTo(80, 210);
-        ctx.lineTo(105, 210);
-        ctx.closePath();
+            // Draw the Star
+            ctx.beginPath();
+            ctx.moveTo(120, 177);
+            ctx.lineTo(135, 210);
+            ctx.lineTo(160, 210);
+            ctx.lineTo(137, 235);
+            ctx.lineTo(150, 270);
+            ctx.lineTo(120, 255);
+            ctx.lineTo(90, 270);
+            ctx.lineTo(103, 235);
+            ctx.lineTo(80, 210);
+            ctx.lineTo(105, 210);
+            ctx.closePath();
 
-        ctx.fill();
-        ctx.stroke();
-});
+            ctx.fill();
+            ctx.stroke();
+
+            captureDrawing();
+        });
+        btnUndo.addEventListener('click', function(){
+            // window.alert("undo");
+
+            if (undoIndex  <= 0){
+                clearCanvas();
+            } else{
+                replaceDrawing();
+            }
+        });
+        function captureDrawing(){
+            undoArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+            undoIndex = undoIndex + 1;
+            // console.log(undoIndex);
+        }
+        function replaceDrawing(){
+            undoIndex = undoIndex - 1;
+            undoArray.pop();
+            ctx.putImageData(undoArray[undoIndex], 0, 0);
+        }
+        function clearCanvas(){
+            ctx.fillStyle = "lightblue";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Reset Array and Index
+            undoArray = [];
+            undoIndex = - 1;
+        }
     </script>
 </body>
 </html>
