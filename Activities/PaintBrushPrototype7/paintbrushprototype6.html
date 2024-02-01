@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PaintBrush Version 6</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      #canvas {
+        border: 1px solid black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #menu {
+        background-color: silver;
+        border: 2px solid #333;
+        height: 60px;
+        width: 100%;
+        position: fixed;
+        padding: 1rem;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #clear {
+        padding: 2px;
+        background-color: #fff;
+        width: 4rem;
+      }
+      #right {
+        /* background-color: red; */
+        /* border: 1px solid black; */
+        display: flex;
+        gap: 1rem;
+      }
+      #previouscolor {
+        height: 15px;
+        width: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <section id="menu">
+      <div id="left">
+        <input type="color" id="colorpicker" value="#000000" />
+        <input type="range" id="rangepicker" min="2" max="100" value="15" />
+        <div id="previouscolor"></div>
+      </div>
+      <div id="right">
+        <img src="Images/eraser.svg" alt="Eraser" />
+        <button id="clear">Clear</button>
+      </div>
+    </section>
+    <script>
+      // Create canvas and assign variables
+      const canvas = window.document.querySelector('#canvas');
+      const ctx = canvas.getContext('2d');
+      // Change line cap
+      ctx.lineCap = 'round';
+
+      // Colorpicker variable
+      const colorPicker = window.document.querySelector('#colorpicker');
+      // Rangepicker variable
+      const rangePicker = window.document.querySelector('#rangepicker');
+      const erase = window.document.querySelector('#right');
+      const clear = window.document.querySelector('#clear');
+      const previousColorBox = window.document.querySelector('#previouscolor');
+
+      // Create JavaScript variables
+      let canvasColor = '#ffffff';
+      let brushColor = colorPicker.value;
+      let painting = false;
+      let brushSize = 15;
+      let boxColor = brushColor;
+      let tempColor = brushColor; // Temporary color holder
+      let previousColor = brushColor;
+
+      previousColorBox.style.backgroundColor = boxColor;
+
+      // Set the canvas size
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Set canvas color
+      canvas.style.backgroundColor = canvasColor;
+
+      // Create mouse object
+      const mouse = {
+        x: undefined,
+        y: undefined,
+      };
+
+      // Add event listener to color picker
+      colorPicker.addEventListener('input', function (e) {
+        // The color picker input tags captures colors when clicked so we are generating a lot of
+        // colors.  We will not update brush color until we start drawing, but we can save previous color
+        previousColor = brushColor; // Set previous color to current brush color before capturing new color
+        tempColor = e.target.value; // Save all color clicks to a temporary color variable.  Used to update brush color
+      });
+
+      // Add event listener to range picker
+      rangePicker.addEventListener('input', function (e) {
+        brushSize = e.target.value;
+      });
+      // Add several event listeners to the canvas
+      canvas.addEventListener('mousedown', function (e) {
+        painting = true;
+        // Begin line
+        ctx.moveTo(mouse.x, mouse.y);
+        draw();
+      });
+
+      canvas.addEventListener('mousemove', function (e) {
+        // Continue line while dragging
+        mouse.x = e.x;
+        mouse.y = e.y;
+        draw();
+      });
+      canvas.addEventListener('mouseup', function (e) {
+        // Stop the drawing
+        painting = false;
+        ctx.beginPath();
+      });
+
+      // Create named function to draw
+      function draw() {
+        // console.log('drawing');
+        if (painting == true) {
+          // Update the previous color box
+          previousColorBox.style.backgroundColor = previousColor; // Use previous color
+          brushColor = tempColor; // Use last color selected from color picker or previous color box
+          previousColorBox.style.border = 'none'; // Remove border from previous color box to show not active
+
+          // Set drawing color, size, style
+          ctx.strokeStyle = brushColor;
+          ctx.lineWidth = brushSize;
+          // Fix the jagged lines
+          ctx.lineJoin = 'round';
+          // ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
+
+          // Line ending coordinates
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+
+      // Add click event for previous color box
+      previousColorBox.addEventListener('click', function (e) {
+        previousColor = brushColor; // Save current brush color as previous color
+
+        // Save the current previous color box color to variable
+        // We will update the brush color when we hit the draw function
+        tempColor = previousColorBox.style.backgroundColor;
+        // brushColor = tempColor;
+        previousColorBox.style.border = '2px solid white'; // Show activated previous color box
+      });
+
+      // Build eraser
+      erase.addEventListener('click', function (e) {
+        brushColor = canvasColor;
+      });
+
+      // Clear screen
+      clear.addEventListener('click', function (e) {
+        ctx.fillStyle = canvasColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // Add event listener
+      window.addEventListener('resize', function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

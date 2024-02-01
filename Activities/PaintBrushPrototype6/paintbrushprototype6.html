@@ -1,9 +1,10 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PaintBrush Version 6</title>
+    <title>Paintbrush</title>
     <style>
       * {
         box-sizing: border-box;
@@ -27,64 +28,61 @@
         padding: 1rem;
         bottom: 0;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        /* justify-content:space-around; */
       }
-      #clear {
-        padding: 2px;
-        background-color: #fff;
-        width: 4rem;
+
+      div {
+        padding-right: 20px;
       }
-      #right {
-        /* background-color: red; */
-        /* border: 1px solid black; */
-        display: flex;
-        gap: 1rem;
-      }
-      #previouscolor {
-        height: 15px;
-        width: 15px;
+
+      img {
+        width: 35px;
       }
     </style>
   </head>
   <body>
     <canvas id="canvas"></canvas>
     <section id="menu">
-      <div id="left">
+      <div id="drawing">
         <input type="color" id="colorpicker" value="#000000" />
         <input type="range" id="rangepicker" min="2" max="100" value="15" />
-        <div id="previouscolor"></div>
       </div>
-      <div id="right">
-        <img src="Images/eraser.svg" alt="Eraser" />
-        <button id="clear">Clear</button>
+      <div id="eraser">
+        <img src="Images/eraser.png" alt="Eraser" />
+      </div>
+
+      <div id="clear">
+        <img src="Images/bin.png" alt="Trash Can" />
+      </div>
+
+      <div id="undo">
+        <img src="Images/undo.svg" alt="Undo">
       </div>
     </section>
     <script>
-      // Create canvas and assign variables
-      const canvas = window.document.querySelector('#canvas');
-      const ctx = canvas.getContext('2d');
-      // Change line cap
-      ctx.lineCap = 'round';
-
-      // Colorpicker variable
-      const colorPicker = window.document.querySelector('#colorpicker');
-      // Rangepicker variable
-      const rangePicker = window.document.querySelector('#rangepicker');
-      const erase = window.document.querySelector('#right');
-      const clear = window.document.querySelector('#clear');
-      const previousColorBox = window.document.querySelector('#previouscolor');
-
       // Create JavaScript variables
-      let canvasColor = '#ffffff';
-      let brushColor = colorPicker.value;
+      let canvasColor = "#ffffff";
+      let brushColor = "#000000";
       let painting = false;
       let brushSize = 15;
-      let boxColor = brushColor;
-      let tempColor = brushColor; // Temporary color holder
-      let previousColor = brushColor;
+      let undoArray = []; // To capture canvas scapshots (image data) of strokes
+      let undoIndex = -1; // To track undo array index value
 
-      previousColorBox.style.backgroundColor = boxColor;
+      // Create canvas and assign variables
+      const canvas = window.document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      // Change line cap
+      ctx.lineCap = "round";
+      // Colorpicker variable
+      const colorPicker = window.document.querySelector("#colorpicker");
+      // Rangepicker variable
+      const rangePicker = window.document.querySelector("#rangepicker");
+      // Eraser variable
+      const erase = window.document.querySelector("#eraser");
+      // Clear variable
+      const clear = window.document.querySelector("#clear");
+    //   Undo Line
+      const undo = window.document.querySelector("#undo");
 
       // Set the canvas size
       canvas.width = window.innerWidth;
@@ -100,34 +98,33 @@
       };
 
       // Add event listener to color picker
-      colorPicker.addEventListener('input', function (e) {
-        // The color picker input tags captures colors when clicked so we are generating a lot of
-        // colors.  We will not update brush color until we start drawing, but we can save previous color
-        previousColor = brushColor; // Set previous color to current brush color before capturing new color
-        tempColor = e.target.value; // Save all color clicks to a temporary color variable.  Used to update brush color
+      colorPicker.addEventListener("input", function (e) {
+        brushColor = e.target.value;
       });
 
       // Add event listener to range picker
-      rangePicker.addEventListener('input', function (e) {
+      rangePicker.addEventListener("input", function (e) {
         brushSize = e.target.value;
       });
       // Add several event listeners to the canvas
-      canvas.addEventListener('mousedown', function (e) {
+      canvas.addEventListener("mousedown", function (e) {
         painting = true;
         // Begin line
         ctx.moveTo(mouse.x, mouse.y);
         draw();
       });
 
-      canvas.addEventListener('mousemove', function (e) {
-        // Continue line while dragging
+      canvas.addEventListener("mousemove", function (e) {
         mouse.x = e.x;
         mouse.y = e.y;
         draw();
       });
-      canvas.addEventListener('mouseup', function (e) {
-        // Stop the drawing
+      canvas.addEventListener("mouseup", function (e) {
         painting = false;
+
+        e.preventDefault;
+        captureImageData(e);
+
         ctx.beginPath();
       });
 
@@ -135,51 +132,68 @@
       function draw() {
         // console.log('drawing');
         if (painting == true) {
-          // Update the previous color box
-          previousColorBox.style.backgroundColor = previousColor; // Use previous color
-          brushColor = tempColor; // Use last color selected from color picker or previous color box
-          previousColorBox.style.border = 'none'; // Remove border from previous color box to show not active
-
-          // Set drawing color, size, style
+          // ctx.beginPath();
           ctx.strokeStyle = brushColor;
           ctx.lineWidth = brushSize;
-          // Fix the jagged lines
-          ctx.lineJoin = 'round';
+          ctx.lineJoin = "round";
           // ctx.arc(mouse.x, mouse.y, brushSize, 0, Math.PI * 2);
-
-          // Line ending coordinates
+          //   ctx.fill();
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
         }
       }
 
-      // Add click event for previous color box
-      previousColorBox.addEventListener('click', function (e) {
-        previousColor = brushColor; // Save current brush color as previous color
-
-        // Save the current previous color box color to variable
-        // We will update the brush color when we hit the draw function
-        tempColor = previousColorBox.style.backgroundColor;
-        // brushColor = tempColor;
-        previousColorBox.style.border = '2px solid white'; // Show activated previous color box
-      });
-
-      // Build eraser
-      erase.addEventListener('click', function (e) {
+      erase.addEventListener("click", function (e) {
         brushColor = canvasColor;
       });
 
-      // Clear screen
-      clear.addEventListener('click', function (e) {
+      clear.addEventListener("click", function (e) {
+        // alert("Hello!");
         ctx.fillStyle = canvasColor;
+
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       });
 
+      undo.addEventListener("click", function (e){
+        // alert("Undo!")
+
+        // Call undoLast function
+        undoLast();
+      });
       // Add event listener
-      window.addEventListener('resize', function () {
+      window.addEventListener("resize", function () {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       });
+
+      function captureImageData(e){
+        if(e.type == "mouseup")
+        {
+        undoArray.push(ctx.getImageData(0,0,canvas.width,canvas.height));
+        undoIndex = undoIndex +1; // undoIndex++;
+        console.log(undoIndex);
+        }
+      }
+      function undoLast(){
+        if(undoIndex <= 0)
+        {
+            clearCanvas();
+        } else{
+            undoIndex = undoIndex -1; // undoIndex--;
+            undoArray.pop(); // Delete last value in array (last image captured)
+            ctx.putImageData(undoArray[undoIndex], 0,0);
+            console.log(undoIndex);
+        }
+      }
+      function clearCanvas(){
+        // Clear canvas
+        ctx.fillStyle = canvasColor;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        // Reset undo array values
+        undoArray = [];
+        undoIndex = -1;
+      }
     </script>
   </body>
 </html>
