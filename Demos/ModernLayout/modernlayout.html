@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Layout</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #top{
+            background-color: lightblue;
+        }
+        #middle{
+            background-color: tomato;
+        }
+        #bottom{
+            background-color: coral;
+        }
+        #top, #middle, #bottom{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+        .container{
+            max-width: 1200px;
+            background-color: white;
+            min-height: 250px;
+            border-radius: 35px;
+            flex-basis: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <div class="container"></div>
+    </div>
+    <div id="middle">
+        <div class="container"></div>
+    </div>
+    <div id="bottom">
+        <div class="container"></div>
+    </div>
+</body>
+</html>
