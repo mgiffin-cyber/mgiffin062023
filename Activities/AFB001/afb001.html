@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFB001</title>
+    <style>
+        h3{
+            text-align: center;
+        }
+        .description{
+            text-align: center;
+        }
+        .parent{
+            width: 50%;
+            min-height: 300px;
+            background-color: lightblue;
+            margin: auto;
+            margin-top: 20px;
+            border: 2px solid black;
+        }
+        .child{
+            width: 80px;
+            height: 80px;
+            background-color: coral;
+            border: 1px solid black;
+        }
+        #parent001{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            /* justify-content: flex-end;
+            justify-content: flex-start;
+            justify-content: space-between;
+            justify-content: space-evenly; */
+            justify-content: space-around;
+            /* align-items: flex-start;                               
+            align-items: flex-end; */
+            align-items: center;
+        }
+        #parent002{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #parent003{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #parent004{
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>AFB001 - Flex-Direction, Justify-Content-Align-Items</h1>
+    <h2>Macy Giffin</h2>
+    <h2>FlexBox</h2>
+    <h3>Flex-Direction, Justify-Content-Align-Items</h3>
+    <div class="description">row, space-around, center</div>
+    <!-- div#parent$$$.parent*4 -->
+    <div id="parent001" class="parent">
+        <!-- div.child{child$$$}*3 -->
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+    </div>
+    <div class="description">column, space-around, center</div>
+    <div id="parent002" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+    </div>
+    <div class="description">row-reverse, space-between, center</div>
+    <div id="parent003" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+    </div>
+    <div class="description">column-reverse, space-between, center</div>
+    <div id="parent004" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+    </div>
+</body>
+</html>
