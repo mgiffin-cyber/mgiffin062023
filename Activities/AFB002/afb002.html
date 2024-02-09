@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFB002</title>
+    <style>
+        h3{
+            text-align: center;
+        }
+        .description{
+            text-align: center;
+        }
+        .parent{
+            width: 50%;
+            min-height: 300px;
+            background-color: lightblue;
+            margin: auto;
+            margin-top: 20px;
+            border: 2px solid black;
+        }
+        .child{
+            width: 80px;
+            height: 80px;
+            background-color: coral;
+            border: 1px solid black;
+        }
+        #parent001{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            /* justify-content: flex-end;
+            justify-content: flex-start;
+            justify-content: space-between;
+            justify-content: space-evenly; */
+            justify-content: space-around;
+            /* align-items: flex-start;                               
+            align-items: flex-end; */
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        #parent002{
+            display: flex;
+            height: 300px;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+        #parent003{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        #parent004{
+            display: flex;
+            height: 300px;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <h1>AFB002 - Flex-Direction, Wrap, Justify-Content-Align-Items</h1>
+    <h2>Macy Giffin</h2>
+    <h2>FlexBox</h2>
+    <h3>Flex-Direction, Wrap, Justify-Content-Align-Items, Align-Content</h3>
+    <div class="description">row, wrap, space-around, center, space-between</div>
+    <!-- div#parent$$$.parent*4 -->
+    <div id="parent001" class="parent">
+        <!-- div.child{child$$$}*3 -->
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+        <div class="child">child004</div>
+        <div class="child">child005</div>
+        <div class="child">child006</div>
+    </div>
+    <div class="description">column, wrap, space-around, center, center</div>
+    <div id="parent002" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+        <div class="child">child004</div>
+        <div class="child">child005</div>
+        <div class="child">child006</div>
+    </div>
+    <div class="description">row-reverse, wrap, space-between, center, space-between</div>
+    <div id="parent003" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+        <div class="child">child004</div>
+        <div class="child">child005</div>
+        <div class="child">child006</div>
+    </div>
+    <div class="description">column-reverse, wrap, space-between, center, space-around</div>
+    <div id="parent004" class="parent">
+        <div class="child">child001</div>
+        <div class="child">child002</div>
+        <div class="child">child003</div>
+        <div class="child">child004</div>
+        <div class="child">child005</div>
+        <div class="child">child006</div>
+    </div>
+</body>
+</html>
