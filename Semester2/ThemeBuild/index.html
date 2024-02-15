@@ -20,8 +20,51 @@
             60px = 6rem
             */
         }
+        /* Browser Reset */
+        *, *::before, *::after{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Easy Pixel Calculations with REM unites */
         body{
             font-size: 1.6rem;
+        }
+        /* Fix Browser Bounce on MacIOS */
+        body{
+            overflow-x: auto;
+            width: 100%;
+            overscroll-behavior: none;
+        }
+        #pageheader{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: coral;
+        }
+        #showcase{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: lightblue;
+        }
+        #features{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: aqua;
+        }
+        #pagecontent{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: lightgreen;
+        }
+        #semesters{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: aquamarine;
+        }
+        #pagefooter{
+            padding: 1rem;
+            min-height: 200px;
+            background-color: cornflowerblue;
         }
         /* Media Queries */
         @media only screen and (min-width: 320px){
@@ -52,6 +95,31 @@
     </style>
 </head>
 <body>
-    
+    <!-- 
+    pageheader
+    showcase
+    features
+    pagecontent
+    semesters
+    pagefooter 
+    -->
+    <!-- Begin pageheader -->
+    <header id="pageheader">pageheader</header>
+    <!-- End pageheader -->
+    <!-- Begin showcase -->
+    <section id="showcase">showcase</section>
+    <!-- End showcase -->
+    <!-- Begin features -->
+    <section id="features">features</section>
+    <!-- End features -->
+    <!-- Begin pagecontent -->
+    <main id="pagecontent">pagecontent</main>
+    <!-- End pagecontent -->
+    <!-- Begin semesters -->
+    <section id="semesters">semesters</section>
+    <!-- End semesters -->
+    <!-- Begin pagefooter -->
+    <footer id="pagefooter">pagefooter</footer>
+    <!-- End pagefooter -->
 </body>
 </html>
