@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psuedo Elements</title>
+    <style>
+        p{
+            line-height: 1.7;
+            color: #333;
+        }
+        p::first-letter{
+            font-size: 32px;
+        }
+        p::selection{
+            background-color: yellow;
+        }
+        blockquote::before{
+            content: "“";
+        font-size: 32px;
+        }
+        blockquote::after{
+            content: "”";
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Psuedo Elements</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum veritatis eligendi delectus iusto velit pariatur hic odio reiciendis harum. Voluptates magni id perspiciatis nostrum adipisci. Nisi ipsa nihil officia ipsam illum rerum hic facere reiciendis. Corrupti adipisci sed dolor expedita nihil? Quas, mollitia? Amet dolore rem sequi iure aliquid nostrum.</p>
+    <blockquote>To be or not to be. - Shakespeare</blockquote>
+</body>
+</html>

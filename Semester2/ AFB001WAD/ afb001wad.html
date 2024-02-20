@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFB001WAD</title>
+    <style>
+        body{
+            background-color: yellow;
+            color: white;
+            box-sizing: border-box;
+        }
+        #container{
+            width: 80%;
+            margin: auto;
+            display: block;
+        }
+        header{
+            min-height: 150px;
+            background-color: #800080;
+            padding: 1rem;
+        }
+        nav{
+            min-height: 500px;
+            background-color: #0000FF;
+            padding: 1rem;
+            flex: 1;
+        }
+        main{
+            min-height: 500px;
+            background-color: #008001;
+            padding: 1rem;
+            flex: 2;
+        }
+        .articles{
+            min-height: 200px;
+            background-color: #ADD8E6;
+            border: 1px solid black;
+            padding: 1rem;
+            flex: 1;
+        }
+        footer{
+            min-height: 150px;
+            background-color: #FFA500;
+            padding: 1rem;
+        }
+        #fb1{
+            border: 3px solid black;
+            display: flex;
+        }
+        #fb2{
+            border: 3px solid red;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>Header</header>
+        <div id="fb1">
+            <nav>Navigation - Flex 1</nav>
+            <main>Main - Flex 3</main>
+        </div>
+        <div id="fb2">
+            <article class="articles">Article - Flex 1</article>
+            <article class="articles">Article - Flex 2</article>
+            <article class="articles">Article - Flex 3</article>
+        </div>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>
