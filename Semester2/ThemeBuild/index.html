@@ -36,6 +36,14 @@
             width: 100%;
             overscroll-behavior: none;
         }
+        /* General Mobile First CSS */
+        .container{
+            background-color: white;
+            min-height: 10rem;
+            max-width: 120rem;
+            margin: auto;
+            padding: 0rem 3rem 0rem 3rem;
+        }
         #pageheader{
             padding: 1rem;
             min-height: 200px;
@@ -69,26 +77,38 @@
         /* Media Queries */
         @media only screen and (min-width: 320px){
             body{
+                font-size: 1rem;
+            }
+            #features{
                 background-color: magenta;
             }
         }
         @media only screen and (min-width: 480px){
             body{
+                font-size: 1.4rem;
+            }
+            #features{
                 background-color: yellow;
             }
         }
         @media only screen and (min-width: 768px){
             body{
+                font-size: 1.6rem;
+            }
+            #features{
                 background-color: lime;
             }
         }
         @media only screen and (min-width: 1024px){
-            body{
+            #features{
                 background-color: coral;
             }
         }
         @media only screen and (min-width: 1200px){
             body{
+                font-size: 2rem;
+            }
+            #features{
                 background-color: steelblue;
             }
         }
@@ -104,22 +124,34 @@
     pagefooter 
     -->
     <!-- Begin pageheader -->
-    <header id="pageheader">pageheader</header>
+    <header id="pageheader">pageheader
+        <div class="container"></div> <!-- End container -->
+    </header>
     <!-- End pageheader -->
     <!-- Begin showcase -->
-    <section id="showcase">showcase</section>
+    <section id="showcase">showcase
+        <div class="container"></div> <!-- End container -->
+    </section>
     <!-- End showcase -->
     <!-- Begin features -->
-    <section id="features">features</section>
+    <section id="features">features
+        <div class="container"></div> <!-- End container -->
+    </section>
     <!-- End features -->
     <!-- Begin pagecontent -->
-    <main id="pagecontent">pagecontent</main>
+    <main id="pagecontent">pagecontent
+        <div class="container"></div> <!-- End container -->
+    </main>
     <!-- End pagecontent -->
     <!-- Begin semesters -->
-    <section id="semesters">semesters</section>
+    <section id="semesters">semesters
+        <div class="container"></div> <!-- End container -->
+    </section>
     <!-- End semesters -->
     <!-- Begin pagefooter -->
-    <footer id="pagefooter">pagefooter</footer>
+    <footer id="pagefooter">pagefooter
+        <div class="container"></div> <!-- End container -->
+    </footer>
     <!-- End pagefooter -->
 </body>
 </html>
