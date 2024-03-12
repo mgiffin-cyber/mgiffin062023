@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psuedo Elements - Data Attributes</title>
+    <style>
+        h1, h2, h3{
+            text-align: center;
+        }
+        blockquote::before{
+            font-size: 64px;
+            background-color: none;
+            content: "“";
+        }
+        blockquote::after{
+            font-size: 64px;
+            background-color: none;
+            content: "”";
+        }
+        blockquote[data-short]{
+            background-color: yellow;
+        }
+        [data-source]{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Psuedo Elements - Data Attributes</h1>
+    <h2>::before and ::after</h2>
+    <h3>Blockquote Element</h3>
+    <!-- Styling data attributes -->
+    <blockquote data-short="Babe">Never let the fear of striking out get in your way. - Babe Ruth</blockquote>
+    <blockquote data-short="Abraham">You cannot escape the responsibility of tomorrow by evading it today. - Abraham Lincoln</blockquote>
+    <!-- JavaScript with data attributes -->
+    <blockquote data-source="Franklin D. Roosevelt">There are many ways of going forward, but only one way of standing still. - Franklin D. Roosevelt</blockquote>
+    <blockquote data-source="Eleanor Roosevelt">Great minds discuss ideas; average minds discuss events; small minds discuss people. - Eleanor Roosevelt</blockquote>
+</body>
+</html>
