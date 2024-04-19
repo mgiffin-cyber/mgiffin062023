@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions</title>
+</head>
+<body>
+    <h1>Arrow Functions</h1>
+
+    <script>
+        // Typical Function
+        // sayHello();
+
+        // function sayHello()
+        // {
+        //     window.alert("hello!");
+        // }
+
+        // Arrow Function
+
+        window.alert(square1(5));
+
+        function square1(x)
+        {
+            return x * x;
+        }
+
+        // Order matters when declaring function with variable
+        const square2 = function(y)
+        {
+            return y * y;
+        }
+
+        window.alert(square2(6));
+
+        // This is the ACTUAL Arrow Function
+        const square3 = (z) => {
+            return z * z;
+        }
+
+        window.alert(square3(10));
+
+        // A streamlined arrow function
+        const square4 = (q) => q * q;
+
+        window.alert(square4(3));
+    </script>
+
+</body>
+</html>
