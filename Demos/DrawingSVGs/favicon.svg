@@ -1,0 +1,6 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+        <line x1="5" x2="250" y1="5" y2="450" stroke="black" stroke-width="15"/>
+        <text x="100" y="400" font-size="70" fill="red" stroke="black" stroke-width="2" font-family="Arial">Macy</text>
+        <circle id="circle1" cx="200" cy="200" r="200" fill="rgba(255, 0, 0, 0.5)" stroke="black" stroke-width="20"></circle>
+        <path d="M20,230 Q40,205 150,330 T490,130" fill="none" stroke="blue" stroke-width="15" />
+    </svg>
