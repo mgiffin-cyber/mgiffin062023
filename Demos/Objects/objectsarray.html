@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Array</title>
+</head>
+<body>
+    <h1>Objects Array</h1>
+    <script>
+        // Create an array of objects
+        const students = [
+            {
+                firstName: "Fabian", 
+                lastName: "Martinez",
+                grade: 12,
+                gpa: 4.0,
+                talk: function(){return "Hola!"},
+                complain: () => "I'm sleepy.",
+                exclaim: () => "I'm passing!",
+            },
+            {
+                firstName: "Jason", 
+                lastName: "Salazar",
+                grade: 12,
+                gpa: 3.2,
+                talk: function(){return "Hi!"},
+                complain: () => "I'm tired.",
+                exclaim: () => "I'm almost passing!",
+            },
+            {
+                firstName: "Juan", 
+                lastName: "Ramirez",
+                grade: 11,
+                gpa: 2.5,
+                talk: function(){return "Greetings!"},
+                complain: () => "I'm sick.",
+                exclaim: () => "I'm not passing!",
+            }
+        ];
+
+        console.log(students);
+
+        // All data
+        console.log(students[0]);
+        console.log(students[1]);
+        console.log(students[2]);
+
+        // Fabian
+        console.log(students[0].firstName);
+        console.log(students[0].lastName);
+        console.log(students[0].talk());
+        console.log(students[0].complain());
+        console.log(students[0].exclaim());
+
+        // Map through the array of objects
+        // const studentNames = students.map();
+        const studentNames = students.map((student) => student.firstName);
+        console.log(studentNames);
+    </script>
+</body>
+</html>
